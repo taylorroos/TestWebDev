@@ -23,6 +23,7 @@ Objetivo: Lista de contato telefônico.
 * Repositório com o código feito.
 * Banco de dados.
 * Link do sistema em produção.
+* Criar Pull Request no repositório principal.
 
 #Nice to have
 
