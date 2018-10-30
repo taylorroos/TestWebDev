@@ -14014,7 +14014,7 @@ window.Vue = __webpack_require__(37);
 
 Vue.component('example-component', __webpack_require__(40));
 
-Vue.component('simple-table', __webpack_require__(43));
+Vue.component('contact-list', __webpack_require__(43));
 
 var app = new Vue({
   el: '#app'
@@ -47445,7 +47445,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/components/SimpleTable.vue"
+Component.options.__file = "resources/js/components/ContactList.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47454,9 +47454,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0a065621", Component.options)
+    hotAPI.createRecord("data-v-0ee8d67a", Component.options)
   } else {
-    hotAPI.reload("data-v-0a065621", Component.options)
+    hotAPI.reload("data-v-0ee8d67a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47477,13 +47477,13 @@ var content = __webpack_require__(45);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(47)("7a20a746", content, false, {});
+var update = __webpack_require__(47)("255a47e4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0a065621\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SimpleTable.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0a065621\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SimpleTable.vue");
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ee8d67a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ContactList.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ee8d67a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ContactList.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -47501,7 +47501,7 @@ exports = module.exports = __webpack_require__(46)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47861,15 +47861,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['contacts'],
 
     data: function data() {
         return {};
-    },
-    mounted: function mounted() {
-        console.log('teste');
     }
 });
 
@@ -47881,15 +47896,55 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    teste\n    " + _vm._s(_vm.contacts) + "\n")])
+  return _c("div", { staticClass: "container" }, [
+    _c("table", { staticClass: "table" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.contacts, function(contact, index) {
+          return _c("tr", { key: index }, [
+            _c("td", [_vm._v(_vm._s(contact.id))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(contact.name))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(contact.email))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(contact.phone))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(contact.cep))])
+          ])
+        })
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("NOME")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("E-MAIL")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("TELEFONE")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("CEP")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0a065621", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0ee8d67a", module.exports)
   }
 }
 

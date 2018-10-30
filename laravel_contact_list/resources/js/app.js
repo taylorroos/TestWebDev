@@ -17,7 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-Vue.component('simple-table', require('./components/SimpleTable.vue'));
+Vue.component('contact-list', require('./components/ContactList.vue'));
 
 const app = new Vue({
     el: '#app'
