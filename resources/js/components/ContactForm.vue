@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="card-body">
-            <h1>Cadastrar Contato</h1>
+            <h1> {{ !contact ? 'Cadastrar' : 'Editar'}} Contato</h1>
             <form @submit.prevent="submitForm">
                 <input type="text" v-model="form.name" class="form-control" placeholder="Nome" required>
                 <input type="email" v-model="form.email" class="form-control" placeholder="E-mail" required>
@@ -17,6 +17,8 @@
 
 <script>
 export default {
+    props: ['contact'],
+
     data() {
         return {
             form: {
@@ -26,27 +28,43 @@ export default {
                 cep: '',
                 loading: false
             },
-            submitButton: 'Cadastrar'
+            submitButton: this.contact ? 'Salvar' : 'Cadastrar'
         }
+    },
+
+    mounted() {
+        this.form = {...this.contact}
+        
     },
     methods: {
         submitForm () {
-            this.form.loading = true
-            this.submitButton = 'Cadastrando...'
-            axios.post('/contatos', this.form)
-            .then(response => {
-                swal("Cadastrado!", "Contato cadastrado com sucesso!", "success")
-                .then((value) => {
-                    window.location.href="/contatos"
-                });
-            })
-            .catch(e => {
-                console.error(e)
-            })
-            .finally(() => {
-                this.submitButton = 'Cadastrar'
-                this.form.loading = false
-            })
+            if(this.contact){
+                this.form.loading = true
+                this.submitButton = 'Salvando...'
+                axios.put(`/contatos/${this.form.id}`, this.form)
+                .then(response => {
+                    swal("Editado!", "Contato editado com sucesso!", "success")
+                    .then((value) => {
+                        window.location.href="/contatos"
+                    });
+                })
+                .catch(e => {
+                    console.error(e)
+                })
+            }else {
+                this.form.loading = true
+                this.submitButton = 'Cadastrando...'
+                axios.post('/contatos', this.form)
+                .then(response => {
+                    swal("Cadastrado!", "Contato cadastrado com sucesso!", "success")
+                    .then((value) => {
+                        window.location.href="/contatos"
+                    });
+                })
+                .catch(e => {
+                    console.error(e)
+                })
+            }
         }
     }
 }

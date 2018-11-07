@@ -34,19 +34,23 @@ class ContactsController extends Controller
         return redirect('/contatos');
     }
 
-    public function update(Request $request, Contact $contact)
+    public function edit($id)
     {
-        $data = $request->all();
+        $contact = Contact::findOrFail($id);
+        return view('contacts.edit',compact('contact'));
+    }
 
-        
-        $contacts->update([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'cep' => $data['cep'],
-        ]);
-        
-        return view('contacts.index', compact('contacts'));
+    public function update(Request $request, $id)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->cep = $request->cep;
+        $contact->save();
+
+        return json_encode($contact);
+
     }
 
     public function destroy($id)

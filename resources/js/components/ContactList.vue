@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
             <h1>Contatos</h1>
-            <a href="contatos/create">
+            <a :href="`${baseUrl}create`">
                 <button class="btn btn-success mb-3"><i class="fa fa-plus"></i>  Cadastrar</button>
             </a>
             <table class="table table-striped">
@@ -24,7 +24,9 @@
                         <td>{{contact.phone}}</td>
                         <td>{{contact.cep}}</td>
                         <td>
-                            <button class="btn btn-info"><i class="fa fa-pen"></i></button>
+                            <a :href="`${baseUrl}${contact.id}/edit`">
+                                <button class="btn btn-info"><i class="fa fa-pen"></i></button>
+                            </a>
                             <button class="btn btn-danger" @click="handleDelete(contact.id)"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
@@ -39,10 +41,21 @@ import swal from 'sweetalert';
 
 export default {
     props: ['contacts'],
+
+    computed: {
+        baseUrl() {
+            const base = window.location.href;
+            if(base.charAt(base.length-1) == '/'){
+                return base;
+            }else {
+                return base+'/';
+            }
+        }
+    },
     
     methods: {
         handleDelete(id) {
-            axios.delete(`/contatos/${id}`).then(response => {
+            axios.delete(`${this.baseUrl}contatos/${id}`).then(response => {
                 if(response.status == 200 || response.status == 201){
                     swal("Deletado!", "Contato deletado com sucesso!", "success")
                     .then((value) => {
