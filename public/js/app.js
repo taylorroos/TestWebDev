@@ -47917,7 +47917,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         handleDelete: function handleDelete(id) {
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete(this.baseUrl + 'contatos/' + id).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('' + this.baseUrl + id).then(function (response) {
                 if (response.status == 200 || response.status == 201) {
                     __WEBPACK_IMPORTED_MODULE_1_sweetalert___default()("Deletado!", "Contato deletado com sucesso!", "success").then(function (value) {
                         window.location.reload();

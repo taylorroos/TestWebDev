@@ -55,7 +55,7 @@ export default {
     
     methods: {
         handleDelete(id) {
-            axios.delete(`${this.baseUrl}contatos/${id}`).then(response => {
+            axios.delete(`${this.baseUrl}${id}`).then(response => {
                 if(response.status == 200 || response.status == 201){
                     swal("Deletado!", "Contato deletado com sucesso!", "success")
                     .then((value) => {
