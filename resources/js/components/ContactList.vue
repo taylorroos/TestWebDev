@@ -24,7 +24,8 @@
                         <td>{{contact.phone}}</td>
                         <td>{{contact.cep}}</td>
                         <td>
-                            
+                            <button class="btn btn-info"><i class="fa fa-pen"></i></button>
+                            <button class="btn btn-danger" @click="handleDelete(contact.id)"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -34,8 +35,23 @@
 </template>
 <script>
 import axios from "axios";
+import swal from 'sweetalert';
+
 export default {
     props: ['contacts'],
+    
+    methods: {
+        handleDelete(id) {
+            axios.delete(`/contatos/${id}`).then(response => {
+                if(response.status == 200 || response.status == 201){
+                    swal("Deletado!", "Contato deletado com sucesso!", "success")
+                    .then((value) => {
+                        window.location.reload();
+                    });
+                }
+            })
+        }
+    }
 }
 </script>
 <style>

@@ -49,10 +49,12 @@ class ContactsController extends Controller
         return view('contacts.index', compact('contacts'));
     }
 
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        $contact->tags()->detach();
+        $contact = Contact::findOrFail($id);
         $contact->delete();
-        return view('contacts.index');
+        
+        return json_encode($contact);
+
     }
 }

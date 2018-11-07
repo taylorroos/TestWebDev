@@ -35,7 +35,10 @@ export default {
             this.submitButton = 'Cadastrando...'
             axios.post('/contatos', this.form)
             .then(response => {
-                window.location.href="/contatos"
+                swal("Cadastrado!", "Contato cadastrado com sucesso!", "success")
+                .then((value) => {
+                    window.location.href="/contatos"
+                });
             })
             .catch(e => {
                 console.error(e)
