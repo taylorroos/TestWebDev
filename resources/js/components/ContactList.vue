@@ -17,7 +17,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(contact, index) in contacts " :key="index">
+                    <tr v-if="!contacts.length>0">Nenhum contato cadastrado...</tr>
+                    <tr v-if="contacts.length>0" v-for="(contact, index) in contacts " :key="index">
                         <td>{{contact.id}}</td>
                         <td>{{contact.name}}</td>
                         <td>{{contact.email}}</td>

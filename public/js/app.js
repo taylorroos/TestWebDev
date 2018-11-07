@@ -47812,7 +47812,7 @@ exports = module.exports = __webpack_require__(14)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47860,6 +47860,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert__);
+//
 //
 //
 //
@@ -47954,40 +47955,53 @@ var render = function() {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.contacts, function(contact, index) {
-            return _c("tr", { key: index }, [
-              _c("td", [_vm._v(_vm._s(contact.id))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(contact.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(contact.email))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(contact.phone))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(contact.cep))]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  { attrs: { href: "" + _vm.baseUrl + contact.id + "/edit" } },
-                  [_vm._m(2, true)]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    on: {
-                      click: function($event) {
-                        _vm.handleDelete(contact.id)
-                      }
-                    }
-                  },
-                  [_c("i", { staticClass: "fa fa-trash" })]
-                )
-              ])
-            ])
-          })
+          [
+            !_vm.contacts.length > 0
+              ? _c("tr", [_vm._v("Nenhum contato cadastrado...")])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.contacts, function(contact, index) {
+              return _vm.contacts.length > 0
+                ? _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(contact.id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(contact.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(contact.email))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(contact.phone))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(contact.cep))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "" + _vm.baseUrl + contact.id + "/edit"
+                          }
+                        },
+                        [_vm._m(2, true)]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              _vm.handleDelete(contact.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-trash" })]
+                      )
+                    ])
+                  ])
+                : _vm._e()
+            })
+          ],
+          2
         )
       ])
     ])
