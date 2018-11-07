@@ -17,17 +17,21 @@ class ContactsController extends Controller
 
     public function create(Request $request)
     {
+        return view('contacts.create');
+    }
+
+    public function store(Request $request)
+    {
         $data = $request->all();
 
-        
-        $contacts = Contact::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'cep' => $data['cep'],
-        ]);
-        
-        return view('contacts.index', compact('contacts'));
+        $contact = new Contact;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->cep = $request->cep;
+        $contact->save();
+
+        return redirect('/contatos');
     }
 
     public function update(Request $request, Contact $contact)
