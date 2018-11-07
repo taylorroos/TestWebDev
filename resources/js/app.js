@@ -19,6 +19,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 
 Vue.component('contact-list', require('./components/ContactList.vue'));
 Vue.component('contact-form', require('./components/ContactForm.vue'));
+Vue.component('the-home', require('./components/TheHome.vue'));
 
 const app = new Vue({
     el: '#app'

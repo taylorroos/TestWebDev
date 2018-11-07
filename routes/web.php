@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/contatos', 'ContactsController@index')->name('contacts.index');
 // Route::get('/contatos/{id}', 'ContactsController@show')->name('contacts.show');
 Route::get('/contatos/create', 'ContactsController@create')->name('contacts.create');
